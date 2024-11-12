@@ -1,0 +1,114 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue';
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: white transparent;
+}
+
+body {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center;
+  background-color: #000;
+  transform-style: preserve-3d;
+  perspective: 10000px;
+  overflow: hidden;
+  background-image: url('assets/texture.svg');
+  background-size: 300px;
+}
+
+.container-pentagonal {
+  --purple: #b429f999;
+  width: 170px;
+  position: relative;
+  height: 170px;
+  transform-style: preserve-3d;
+  perspective: 10000px;
+  animation: rotar 12s linear infinite alternate both;
+
+  @media (width <= 1111px) {
+    zoom: 0.4;
+  }
+
+  .base {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: var(--purple);
+    transform-origin: 50% 0;
+    transform: rotateX(-90deg);
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+
+    &.top {
+      top: 0;
+    }
+
+    &.bottom {
+      top: 150%;
+    }
+  }
+
+  .side {
+    width: 64%;
+    height: 150%;
+    position: absolute;
+  }
+
+  .side1 {
+    background-color: #fff8;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%) translateZ(-170px);
+  }
+  .side2 {
+    background-color: #f008;
+    top: 0%;
+    left: 50%;
+    transform-origin: 100% 0%;
+    transform: translateX(-50%) translateZ(-170px) rotateY(106deg);
+  }
+  .side3 {
+    background-color: #0f08;
+    top: 0%;
+    left: 50%;
+    transform-origin: 0% 0%;
+    transform: translateX(-50%) translateZ(-170px) rotateY(-106deg);
+  }
+  .side4 {
+    background-color: #ff08;
+    top: 0%;
+    left: 50%;
+    width: 63%;
+    transform-origin: 0% 0%;
+    transform: rotateY(143deg);
+  }
+  .side5 {
+    background-color: #00f8;
+    top: 0%;
+    left: 50%;
+    width: 63%;
+    transform-origin: 0% 0%;
+    transform: rotateY(398deg);
+  }
+}
+
+@keyframes rotar {
+  0% {
+    transform: rotateX(-369deg) rotateY(-369deg);
+  }
+  100% {
+    transform: rotateX(369deg) rotateY(369deg);
+  }
+}
